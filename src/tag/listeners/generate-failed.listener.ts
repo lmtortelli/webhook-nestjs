@@ -11,7 +11,7 @@ export class GenerateFailedListener {
   @OnEvent(Event.TAG_GENERATE_FAILED)
   handle(event: GenerateFailedEvent) {
     this.webhookService.sendEvent({
-      event: Event.TAG_GENERATE_SUCCESS,
+      event: Event.TAG_GENERATE_FAILED,
       userId: event.userId,
       payload: {
         order_id: event.orderId,

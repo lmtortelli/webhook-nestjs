@@ -1,5 +1,5 @@
 export class TagDto {
-  public order_id: string;
+  public orderId: string;
   public userId: string;
   public from: any;
   public sender: any;

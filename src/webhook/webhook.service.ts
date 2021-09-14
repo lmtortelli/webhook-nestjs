@@ -21,15 +21,16 @@ export class WebhookService {
   }
 
   public async sendEvent(sendEventDto: SendEventDto): Promise<void> {
+    
     const webhookRegistered = await this.webhookRepository.findOne({
       event: sendEventDto.event,
       user: sendEventDto.userId,
     });
-
+    
     if (!webhookRegistered) {
       return;
     }
-
+    
     this.httpService
       .post(webhookRegistered.callback, sendEventDto.payload)
       .toPromise();

@@ -24,8 +24,7 @@ export class TagController {
     @Res() res: Response,
   ) {
     tagDto.userId = req.user.id;
-    this.tagService.generate(tagDto);
 
-    return res.status(HttpStatus.OK).json([]);
+    return this.tagService.generate(tagDto, res);
   }
 }

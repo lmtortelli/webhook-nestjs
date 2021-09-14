@@ -15,6 +15,7 @@ export class GenerateSuccessListener {
       userId: event.userId,
       payload: {
         order_id: event.orderId,
+        authorization_code: event.authorizationCode
       },
     });
   }
