@@ -1,5 +1,13 @@
-import { Controller, Post, Body, Request, UseGuards, Res, HttpStatus } from '@nestjs/common';
-import { Response } from 'express'
+import {
+  Controller,
+  Post,
+  Body,
+  Request,
+  UseGuards,
+  Res,
+  HttpStatus,
+} from '@nestjs/common';
+import { Response } from 'express';
 import { TagService } from './tag.service';
 import { TagDto } from './dto/tag.dto';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
@@ -10,12 +18,14 @@ export class TagController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  public generate(@Body() tagDto: TagDto, @Request() req, @Res() res: Response) {
-    tagDto.userId = req.user.id
+  public generate(
+    @Body() tagDto: TagDto,
+    @Request() req,
+    @Res() res: Response,
+  ) {
+    tagDto.userId = req.user.id;
     this.tagService.generate(tagDto);
-    
-    return res.status(HttpStatus.OK).json([])
-  }
 
-  
+    return res.status(HttpStatus.OK).json([]);
+  }
 }

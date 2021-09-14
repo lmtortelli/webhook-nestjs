@@ -5,12 +5,10 @@ import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
-
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   @Post()
   public create(@Body() userDto: UserDto): Promise<User> {
-    return this.userService.create(userDto)
+    return this.userService.create(userDto);
   }
-
 }

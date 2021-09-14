@@ -4,12 +4,9 @@ import { WebhookService } from '../../webhook/webhook.service';
 import { Event } from '../../shared/enum/Event.enum';
 import { GenerateSuccessEvent } from '../events/generate-success.event';
 
-
 @Injectable()
 export class GenerateSuccessListener {
-  constructor(
-    private webhookService: WebhookService
-  ) { }
+  constructor(private webhookService: WebhookService) {}
 
   @OnEvent(Event.TAG_GENERATE_SUCCESS)
   handle(event: GenerateSuccessEvent) {
@@ -17,8 +14,8 @@ export class GenerateSuccessListener {
       event: Event.TAG_GENERATE_SUCCESS,
       userId: event.userId,
       payload: {
-        order_id: event.orderId
-      }
-    })
+        order_id: event.orderId,
+      },
+    });
   }
 }

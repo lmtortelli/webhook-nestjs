@@ -4,13 +4,10 @@ import { WebhookService } from '../../webhook/webhook.service';
 import { Event } from '../../shared/enum/Event.enum';
 import { GenerateFailedEvent } from '../events/generate-failed.event';
 
-
 @Injectable()
 export class GenerateFailedListener {
-  constructor(
-    private webhookService: WebhookService
-  ) { }
-  
+  constructor(private webhookService: WebhookService) {}
+
   @OnEvent(Event.TAG_GENERATE_FAILED)
   handle(event: GenerateFailedEvent) {
     this.webhookService.sendEvent({
@@ -18,8 +15,8 @@ export class GenerateFailedListener {
       userId: event.userId,
       payload: {
         order_id: event.orderId,
-        message: event.message
-      }
-    })
+        message: event.message,
+      },
+    });
   }
 }

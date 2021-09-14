@@ -1,4 +1,4 @@
 export class UserDto {
-  id? :string
-  email: string
+  id?: string;
+  email: string;
 }

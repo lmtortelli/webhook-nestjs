@@ -7,25 +7,25 @@ import { GenerateSuccessEvent } from './events/generate-success.event';
 
 @Injectable()
 export class TagService {
-  constructor(
-    private eventEmitter: EventEmitter2
-  ) { }
+  constructor(private eventEmitter: EventEmitter2) { }
+  
   public generate(tagDto: TagDto): void {
-    
-    if (Math.random() < 0.5) { 
-      let eventFailed = new GenerateFailedEvent(tagDto.order_id, tagDto.userId)
-      this.eventEmitter.emit(
-        Event.TAG_GENERATE_FAILED, eventFailed
-      )
-      return
+    if (Math.random() < 0.5) {
+      const eventFailed = new GenerateFailedEvent(
+        tagDto.order_id,
+        tagDto.userId,
+      );
+      this.eventEmitter.emit(Event.TAG_GENERATE_FAILED, eventFailed);
+      return;
     }
 
-    let eventSuccess = new GenerateSuccessEvent(tagDto.order_id, tagDto.userId)
-    
-      this.eventEmitter.emit(
-        Event.TAG_GENERATE_SUCCESS, eventSuccess
-      )
-  
-    return
+    const eventSuccess = new GenerateSuccessEvent(
+      tagDto.order_id,
+      tagDto.userId,
+    );
+
+    this.eventEmitter.emit(Event.TAG_GENERATE_SUCCESS, eventSuccess);
+
+    return;
   }
 }

@@ -8,19 +8,17 @@ import { User } from './entities/user.entity';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private userRepository: EntityRepository<User>
-  ) { 
-   
-  }
+    private userRepository: EntityRepository<User>,
+  ) {}
 
   public async create(userDto: UserDto): Promise<User> {
-    const user = this.userRepository.create({ email: userDto.email} as User)
-    this.userRepository.persistAndFlush(user)
-    
-    return user
+    const user = this.userRepository.create({ email: userDto.email } as User);
+    this.userRepository.persistAndFlush(user);
+
+    return user;
   }
 
   public async find(userDto: UserDto): Promise<User> {
-    return this.userRepository.findOne({email: userDto.email})
+    return this.userRepository.findOne({ email: userDto.email });
   }
 }

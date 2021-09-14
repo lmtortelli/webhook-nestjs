@@ -8,6 +8,6 @@ import { WebhookModule } from 'src/webhook/webhook.module';
 @Module({
   imports: [WebhookModule],
   controllers: [TagController],
-  providers: [TagService, GenerateFailedListener, GenerateSuccessListener]
+  providers: [TagService, GenerateFailedListener, GenerateSuccessListener],
 })
 export class TagModule {}

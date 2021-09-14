@@ -6,12 +6,9 @@ import { Webhook } from './entities/webhook.entity';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 @Module({
-  imports: [
-    HttpModule,
-    MikroOrmModule.forFeature([Webhook]),
-  ],
+  imports: [HttpModule, MikroOrmModule.forFeature([Webhook])],
   controllers: [WebhookController],
   providers: [WebhookService],
-  exports: [WebhookService]
+  exports: [WebhookService],
 })
 export class WebhookModule {}

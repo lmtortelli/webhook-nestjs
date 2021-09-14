@@ -6,8 +6,6 @@ import { WebhookModule } from './webhook/webhook.module';
 import { TagModule } from './tag/tag.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 
-
-
 @Module({
   imports: [
     EventEmitterModule.forRoot(),
@@ -15,7 +13,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     AuthModule,
     UserModule,
     WebhookModule,
-    TagModule
-    ]
+    TagModule,
+  ],
 })
 export class AppModule {}
